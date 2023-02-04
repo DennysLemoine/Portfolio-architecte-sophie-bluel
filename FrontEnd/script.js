@@ -9,7 +9,7 @@ fetch('http://localhost:5678/api/works', {
     .then(response => response.json())
     // 2ème then = AFFICHER LES DONNEES + RAPPEL CONST DISPLAYWORK POUR LOCALISER LES DATA A AFFICHER
     .then(data => {
-        console.log(data);
+        localStorage.setItem('works', JSON.stringify(data));
         displayWorks(data);
     })
     // EN CAS D'ERREUR, AFFICHER ERROR DANS LA CONSOLE
@@ -20,6 +20,7 @@ fetch('http://localhost:5678/api/works', {
 const displayWorks = (works) => {
     // CREATION CONST GALLERY QUI VISE LA DIV .GALLERY DU HTML + CONSOLE.LOG
     const gallery = document.querySelector('.gallery');
+    gallery.innerHTML = '';
     console.log(gallery);
 
     // CREATION BOUCLE FOREACH DE WORKS AVEC CREATION DE FONCTION FLECHEE WORK
@@ -54,6 +55,24 @@ fetch('http://localhost:5678/api/categories', {
     },
 })
     .then(response => response.json())
-    .then(categorie => console.log(categorie))
+    .then(categories => displayCategories(categories))
     .catch(error => console.error(error));
 
+const displayCategories = (categories) => {
+    const wrapper = document.querySelector('.button_filter');
+
+    categories.forEach((categorie) => {
+        const button = document.createElement('button');
+        button.classList.add('button_text');
+        button.innerText = categorie.name;
+        button.setAttribute('data-id', categorie.id);
+        button.addEventListener('click', function (event) {
+            // console.log(this.getAttribute('data-id'));
+            const works = JSON.parse(localStorage.getItem('works'));
+            const categorieId = parseInt(this.getAttribute('data-id'));
+            const filtered_works = works.filter(work => work.categoryId === categorieId);
+            displayWorks(filtered_works);
+        })
+        wrapper.append(button);
+    })
+}
