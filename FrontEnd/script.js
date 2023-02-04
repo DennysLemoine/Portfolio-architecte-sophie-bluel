@@ -58,21 +58,3 @@ fetch('http://localhost:5678/api/categories', {
     .then(categories => displayCategories(categories))
     .catch(error => console.error(error));
 
-const displayCategories = (categories) => {
-    const wrapper = document.querySelector('.button_filter');
-
-    categories.forEach((categorie) => {
-        const button = document.createElement('button');
-        button.classList.add('button_text');
-        button.innerText = categorie.name;
-        button.setAttribute('data-id', categorie.id);
-        button.addEventListener('click', function (event) {
-            // console.log(this.getAttribute('data-id'));
-            const works = JSON.parse(localStorage.getItem('works'));
-            const categorieId = parseInt(this.getAttribute('data-id'));
-            const filtered_works = works.filter(work => work.categoryId === categorieId);
-            displayWorks(filtered_works);
-        })
-        wrapper.append(button);
-    })
-}
