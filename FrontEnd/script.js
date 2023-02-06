@@ -9,7 +9,6 @@ fetch('http://localhost:5678/api/works', {
     .then(response => response.json())
     // 2ème then = AFFICHER LES DONNEES + RAPPEL CONST DISPLAYWORK POUR LOCALISER LES DATA A AFFICHER
     .then(data => {
-        localStorage.setItem('works', JSON.stringify(data));
         displayWorks(data);
     })
     // EN CAS D'ERREUR, AFFICHER ERROR DANS LA CONSOLE
@@ -43,10 +42,10 @@ const displayWorks = (works) => {
         // append AU LIEU de appendChild PERMET D'AJOUTER LA MM CHOSE ET AUSSI DU TEXT, ICI LE figcaption
         galleryContent.append(img, figcaption);
 
-        // AJOUTER LA GALLERY QUI CONTIENT LE galleryContent AU DOM
+        // AJOUTER LE gallery QUI CONTIENT LE galleryContent AU DOM
         gallery.appendChild(galleryContent);
     });
-}
+};
 // AJOUT DES CATEGORIES VENANT DE L'API POUR FILTRER
 fetch('http://localhost:5678/api/categories', {
     method: 'GET',
@@ -55,6 +54,8 @@ fetch('http://localhost:5678/api/categories', {
     },
 })
     .then(response => response.json())
-    .then(categories => displayCategories(categories))
+    .then(categories => {
+        console.log(categories)
+        displayCategories(data)
+    })
     .catch(error => console.error(error));
-
