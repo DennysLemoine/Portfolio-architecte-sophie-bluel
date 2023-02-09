@@ -129,6 +129,7 @@ li:hover {
 	display: flex;
 	align-items: center;
 	margin-top: 10rem;
+	margin-bottom: 10rem;
 }
 
 #introduction figure {
@@ -150,7 +151,8 @@ li:hover {
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
+	margin-bottom: 1.5em;
+	padding-right: 10rem;
 }
 
 #portfolio h2 {
@@ -279,8 +281,8 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	gap: 0.3rem;
-	width: 30%;
+	gap: 0.5rem;
+	width: 32%;
 }
 
 .login_label {
@@ -296,3 +298,24 @@ footer nav ul {
 	 border: none;
 	 box-shadow: 0 10px 15px #eeece9;
  }
+
+ .btn_Tologin {
+	 font-family: 'Syne';
+	 font-weight: 700;
+	 color: #ffffff;
+	 border: 1px solid #1D6154;
+	 background-color: #1D6154;
+	 border-radius: 60px;
+	 padding: 0.5rem 2rem;
+	 cursor: pointer;
+	 margin-top: 2.5rem;
+ }
+
+ .btn_forget_pass {
+	 font-weight: 700;
+	 color: black;
+	 margin-bottom: 22rem;
+ }
+.btn_forget_pass a:visited{
+	color: inherit;
+}
