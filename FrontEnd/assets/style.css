@@ -107,6 +107,11 @@ nav ul {
 	gap: 3rem;
 }
 
+.ul_btn a {
+	text-decoration: none;
+	color: inherit;
+}
+
 .instagram_logo {
 	height: 1.2rem;
 }
