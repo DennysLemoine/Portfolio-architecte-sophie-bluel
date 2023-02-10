@@ -20,7 +20,7 @@ fetch('http://localhost:5678/api/works', {
 const displayWorks = (works) => {
     // CREATION CONST GALLERY QUI VISE LA DIV .GALLERY DU HTML + CONSOLE.LOG
     const gallery = document.querySelector('.gallery');
-    gallery.innerHTML = '';
+    gallery.innerText = '';
     // console.log(gallery);
 
     // CREATION BOUCLE FOREACH DE WORKS AVEC CREATION DE FONCTION FLECHEE WORK
@@ -120,6 +120,7 @@ const displayButtons = (categories) => {
                 .then(works => {
                     // filter PERMET D'ITERER SUR TOUT LE TABLEAU works PUIS FONCTION FLECHEE RETOURNE LE WORK SI CDT EST BONNE
                     const workFiltered = categoryId !== 0 ? works.filter(work => work.categoryId === categoryId) : works;
+
                     // console.log(workFiltered);
                     displayWorks(workFiltered);
                 })
@@ -127,3 +128,10 @@ const displayButtons = (categories) => {
         });
     })
 }
+
+document.querySelector("#form1").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var email = document.querySelector("#userlogin").value;
+    var password = document.querySelector("#userpass").value;
+})
