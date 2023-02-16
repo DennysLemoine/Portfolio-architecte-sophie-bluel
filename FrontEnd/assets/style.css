@@ -355,6 +355,12 @@ footer nav ul {
 	color: white;
 }
 
+#empty_text {
+	display: none;
+	color: red;
+}
+
 #error_login {
+	display: none;
 	color: red;
 }
