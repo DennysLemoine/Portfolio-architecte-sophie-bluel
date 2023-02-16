@@ -356,11 +356,11 @@ footer nav ul {
 }
 
 #empty_text {
-	display: none;
+	/*display: none;*/
 	color: red;
 }
 
 #error_login {
-	display: none;
+	/*display: none;*/
 	color: red;
 }
