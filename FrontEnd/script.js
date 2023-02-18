@@ -12,6 +12,7 @@ fetch('http://localhost:5678/api/works', {
     })
     .catch(error => console.error(error));
 
+
 // POUR AFFICHER LE CONTENU DE L'APPEL API :
 const displayWorks = (works) => {
     const gallery = document.querySelector('.gallery');
@@ -37,6 +38,7 @@ const displayWorks = (works) => {
         gallery.appendChild(galleryContent);
     });
 };
+
 // AJOUT DES CATEGORIES VENANT DE L'API POUR FILTRER
 fetch('http://localhost:5678/api/categories', {
     method: 'GET',
@@ -107,8 +109,35 @@ const displayButtons = (categories) => {
     })
 }
 
+// CREATION PAGE DYNAMIQUE SI UTILISATEUR CONNECTE
 let token = localStorage.getItem('token');
-console.log(token)
+// console.log(token)
+
 if (token) {
-    console.log('token présent')
+    console.log('TOKEN PRESENT')
+
+    // LIGNE NOIRE, AVANT HEADER
+    const header = document.querySelector('header');
+    const divEdition = document.createElement('div');
+    divEdition.setAttribute('class', 'divEdition');
+    // INSERTBEFORE AJOUTE AUSSI COMME Append/AppendChild
+    header.insertBefore(divEdition, h1);
+
+    //AJOUT DE L'ICONE FONTAWESOME A JS
+    const editIcon = document.createElement('i');
+    editIcon.classList.add('fa-light', 'fa-light fa-pen-to-square');
+    divEdition.appendChild(editIcon);
+
+    const linkEditor = document.createElement('a');
+    linkEditor.innerText = "Mode édition";
+
+
+    // ESPACE EN DESSOUS H2
+    const projectH2 = document.querySelector('#portfolio h2');
+    projectH2.style.marginBottom = "3em";
+
+    // SUPPRESSION DES BOUTONS FILTRES
+    const divFilter = document.querySelector('.button_filter');
+    divFilter.style.display = "none";
+
 }

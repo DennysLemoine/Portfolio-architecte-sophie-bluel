@@ -364,3 +364,23 @@ footer nav ul {
 	/*display: none;*/
 	color: red;
 }
+
+.divEdition {
+	height: 60px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: black;
+}
+
+.body	{
+	margin-top: 100px;
+}
+
+.fa-pen-to-square {
+	display: block;
+	width: 20em;
+	height: 20em;
+	color: white;
+}
