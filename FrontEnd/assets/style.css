@@ -354,3 +354,13 @@ footer nav ul {
 	background-color: #1D6154;
 	color: white;
 }
+
+#empty_text {
+	/*display: none;*/
+	color: red;
+}
+
+#error_login {
+	/*display: none;*/
+	color: red;
+}
