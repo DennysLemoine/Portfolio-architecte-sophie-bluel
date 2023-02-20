@@ -365,22 +365,81 @@ footer nav ul {
 	color: red;
 }
 
-.divEdition {
-	height: 60px;
-	left: 0;
-	right: 0;
+.blackBanner {
+	position: absolute;
 	top: 0;
-	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
 	background-color: black;
+	z-index: 999;
 }
 
-.body	{
-	margin-top: 100px;
+.divEdition {
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5em;
 }
 
 .fa-pen-to-square {
-	display: block;
-	width: 20em;
-	height: 20em;
+	font-size: 17px;
+	position: center;
+	color: white;
+
+}
+
+.linkEditor {
+	font-size: 15px;
 	color: white;
 }
+
+.buttonEdit {
+	margin-left: 15px;
+	border-radius: 30px;
+	padding: 10px 25px;
+	background-color: white;
+	cursor: pointer;
+}
+
+.spanButton {
+	font-family: 'Work Sans';
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.grpEdit1 {
+	display: flex;
+	gap: 0.6em;
+	padding-top: 10px;
+	margin-left: 55px;
+}
+
+.faPen_Black {
+	font-size: 17px;
+	color: black;
+	cursor: pointer;
+}
+
+.textModifier1 {
+	margin-top: 0.2em;
+	font-size: 15px;
+	color: black;
+	cursor: pointer;
+}
+
+.grpEdit2 {
+	display: flex;
+	gap: 0.6em;
+	padding-top: 10px;
+	margin-left: 55px;
+}
+
+.textModifier2 {
+	margin-top: 0.2em;
+	font-size: 15px;
+	color: black;
+	cursor: pointer;
+}
+

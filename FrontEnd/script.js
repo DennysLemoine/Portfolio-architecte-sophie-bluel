@@ -117,27 +117,73 @@ if (token) {
     console.log('TOKEN PRESENT')
 
     // LIGNE NOIRE, AVANT HEADER
+    const body = document.querySelector('body');
     const header = document.querySelector('header');
+    header.style.marginTop = '100px';
+    const blackBanner = document.createElement('div');
+    blackBanner.setAttribute('class', 'blackBanner');
+
+    // INSERTBEFORE AJOUTE AUSSI COMME Append/AppendChild
+    body.insertBefore(blackBanner, header);
+
     const divEdition = document.createElement('div');
     divEdition.setAttribute('class', 'divEdition');
-    // INSERTBEFORE AJOUTE AUSSI COMME Append/AppendChild
-    header.insertBefore(divEdition, h1);
+    blackBanner.appendChild(divEdition);
 
-    //AJOUT DE L'ICONE FONTAWESOME A JS
+    // AJOUT DE L'ICONE FONTAWESOME A JS
     const editIcon = document.createElement('i');
-    editIcon.classList.add('fa-light', 'fa-light fa-pen-to-square');
+    editIcon.classList.add('far', 'fa-pen-to-square');
     divEdition.appendChild(editIcon);
 
-    const linkEditor = document.createElement('a');
+    // AJOUT TEXTE "MODE EDITION"
+    const linkEditor = document.createElement('p');
+    linkEditor.setAttribute('class', 'linkEditor');
     linkEditor.innerText = "Mode édition";
+    divEdition.appendChild(linkEditor);
 
+    // AJOUT BOUTON EDITION
+    const buttonEdit = document.createElement('button');
+    buttonEdit.setAttribute('class', 'buttonEdit');
+    divEdition.appendChild(buttonEdit);
+
+    // AJOUT TEXTE BOUTON
+    const spanButton = document.createElement('span');
+    spanButton.setAttribute('class', 'spanButton');
+    spanButton.innerText = 'publier les changements';
+    buttonEdit.appendChild(spanButton);
+
+    // AJOUT DIV MODIFIER AVEC ICONE + P
+    const figureImg = document.getElementById('figure_introduction');
+    const grpEdit1 = document.createElement('div');
+    grpEdit1.setAttribute('class', 'grpEdit1');
+    figureImg.appendChild(grpEdit1);
+
+    const editIconDiv1 = document.createElement('i');
+    editIconDiv1.classList.add('far', 'fa-pen-to-square');
+    editIconDiv1.classList.add('faPen_Black');
+    grpEdit1.appendChild(editIconDiv1);
+
+    const textModifier1 = document.createElement('p');
+    textModifier1.setAttribute('class', 'textModifier1');
+    textModifier1.innerText = 'modifier';
+    grpEdit1.appendChild(textModifier1);
+
+    // AJOUT DE LA MEME DIV APRES h2
+    const projectH2 = document.querySelector('#portfolio h2');
+    const editIconDiv2 = document.createElement('i');
+    editIconDiv2.classList.add('far', 'fa-pen-to-square');
+    editIconDiv2.classList.add('faPen_Black');
+    projectH2.appendChild(editIconDiv2);
+
+    const textModifier2 = document.createElement('p');
+    textModifier2.setAttribute('class', 'textModifier2');
+    textModifier2.innerText = 'modifier';
+    projectH2.appendChild(textModifier2);
 
     // ESPACE EN DESSOUS H2
-    const projectH2 = document.querySelector('#portfolio h2');
     projectH2.style.marginBottom = "3em";
 
     // SUPPRESSION DES BOUTONS FILTRES
     const divFilter = document.querySelector('.button_filter');
     divFilter.style.display = "none";
-
 }
