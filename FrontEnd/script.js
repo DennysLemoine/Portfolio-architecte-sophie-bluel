@@ -183,27 +183,27 @@ if (token) {
     divEdit1.appendChild(editIcon2());
     divEdit1.appendChild(textEdit());
 
-    // AJOUT D'UNE MEME DIV APRES h2
+    // AJOUT BOUTON SECTION h2
     const sectionh2 = document.getElementById('portfolio');
     const projectH2 = document.querySelector('#portfolio h2');
     const buttonFilter = document.querySelector('.button_filter');
-
+    projectH2.style.marginBottom = '0';
 
     const divH2 = document.createElement('div');
     divH2.setAttribute('class', 'divH2');
+    divH2.style.marginBottom = "4rem";
     sectionh2.insertBefore(divH2, buttonFilter);
 
     divH2.appendChild(projectH2);
 
-    const divEdit2 = document.createElement('div');
-    divEdit2.setAttribute('class', 'divEdit2');
-    divH2.appendChild(divEdit2);
+    // AJOUT BOUTON POUR MODALE
+    const buttonH2 = document.createElement('button');
+    buttonH2.setAttribute('class', 'buttonH2');
+    divH2.appendChild(buttonH2);
 
-    divEdit2.appendChild(editIcon2());
-    divEdit2.appendChild(textEdit());
+    buttonH2.appendChild(editIcon2());
+    buttonH2.appendChild(textEdit());
 
-    // ESPACE EN DESSOUS H2
-    projectH2.style.marginBottom = "3em";
 
     // SUPPRESSION DES BOUTONS FILTRES
     const divFilter = document.querySelector('.button_filter');

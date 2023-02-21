@@ -423,6 +423,7 @@ footer nav ul {
 }
 
 .textModifier {
+	font-family: 'Work Sans';
 	padding-top: 2px;
 	cursor: pointer;
 }
@@ -435,9 +436,12 @@ footer nav ul {
 	margin-left: 120px;
 }
 
-.divEdit2 {
+.buttonH2 {
 	display: flex;
+	align-items: center;
 	gap: 0.6em;
-	padding-top: 7px;
 	margin-left: 30px;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
 }
