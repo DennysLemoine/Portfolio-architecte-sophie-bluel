@@ -126,25 +126,30 @@ if (token) {
     // INSERTBEFORE AJOUTE AUSSI COMME Append/AppendChild
     body.insertBefore(blackBanner, header);
 
-    const divEdition = document.createElement('div');
-    divEdition.setAttribute('class', 'divEdition');
-    blackBanner.appendChild(divEdition);
+    const divBlackBanner = document.createElement('div');
+    divBlackBanner.setAttribute('class', 'divBlackBanner');
+    blackBanner.appendChild(divBlackBanner);
 
     // AJOUT DE L'ICONE FONTAWESOME A JS
-    const editIcon = document.createElement('i');
-    editIcon.classList.add('far', 'fa-pen-to-square');
-    divEdition.appendChild(editIcon);
+    const editIcon1 = () => {
+        const editI = document.createElement('i');
+        editI.classList.add('far', 'fa-pen-to-square');
+        // editI.classList.add('faPen_Black');
+        return editI;
+    };
+
+    divBlackBanner.appendChild(editIcon1());
 
     // AJOUT TEXTE "MODE EDITION"
     const linkEditor = document.createElement('p');
     linkEditor.setAttribute('class', 'linkEditor');
     linkEditor.innerText = "Mode édition";
-    divEdition.appendChild(linkEditor);
+    divBlackBanner.appendChild(linkEditor);
 
     // AJOUT BOUTON EDITION
     const buttonEdit = document.createElement('button');
     buttonEdit.setAttribute('class', 'buttonEdit');
-    divEdition.appendChild(buttonEdit);
+    divBlackBanner.appendChild(buttonEdit);
 
     // AJOUT TEXTE BOUTON
     const spanButton = document.createElement('span');
@@ -154,31 +159,48 @@ if (token) {
 
     // AJOUT DIV MODIFIER AVEC ICONE + P
     const figureImg = document.getElementById('figure_introduction');
-    const grpEdit1 = document.createElement('div');
-    grpEdit1.setAttribute('class', 'grpEdit1');
-    figureImg.appendChild(grpEdit1);
 
-    const editIconDiv1 = document.createElement('i');
-    editIconDiv1.classList.add('far', 'fa-pen-to-square');
-    editIconDiv1.classList.add('faPen_Black');
-    grpEdit1.appendChild(editIconDiv1);
+    const divEdit1 = document.createElement('div');
+    divEdit1.setAttribute('class', 'divEdit1');
+    figureImg.appendChild(divEdit1);
 
-    const textModifier1 = document.createElement('p');
-    textModifier1.setAttribute('class', 'textModifier1');
-    textModifier1.innerText = 'modifier';
-    grpEdit1.appendChild(textModifier1);
+    // AJOUT DEUXIEME ICON
+    const editIcon2 = () => {
+        const editI = document.createElement('i');
+        editI.classList.add('far', 'fa-pen-to-square');
+        editI.classList.add('faPen_Black');
+        return editI;
+    };
 
-    // AJOUT DE LA MEME DIV APRES h2
+    // AJOUT TEXTE modifier
+    const textEdit = () => {
+        const textModifier = document.createElement('p');
+        textModifier.setAttribute('class', 'textModifier');
+        textModifier.innerText = 'modifier';
+        return textModifier;
+    }
+
+    divEdit1.appendChild(editIcon2());
+    divEdit1.appendChild(textEdit());
+
+    // AJOUT D'UNE MEME DIV APRES h2
+    const sectionh2 = document.getElementById('portfolio');
     const projectH2 = document.querySelector('#portfolio h2');
-    const editIconDiv2 = document.createElement('i');
-    editIconDiv2.classList.add('far', 'fa-pen-to-square');
-    editIconDiv2.classList.add('faPen_Black');
-    projectH2.appendChild(editIconDiv2);
+    const buttonFilter = document.querySelector('.button_filter');
 
-    const textModifier2 = document.createElement('p');
-    textModifier2.setAttribute('class', 'textModifier2');
-    textModifier2.innerText = 'modifier';
-    projectH2.appendChild(textModifier2);
+
+    const divH2 = document.createElement('div');
+    divH2.setAttribute('class', 'divH2');
+    sectionh2.insertBefore(divH2, buttonFilter);
+
+    divH2.appendChild(projectH2);
+
+    const divEdit2 = document.createElement('div');
+    divEdit2.setAttribute('class', 'divEdit2');
+    divH2.appendChild(divEdit2);
+
+    divEdit2.appendChild(editIcon2());
+    divEdit2.appendChild(textEdit());
 
     // ESPACE EN DESSOUS H2
     projectH2.style.marginBottom = "3em";

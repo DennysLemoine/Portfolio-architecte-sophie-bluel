@@ -375,7 +375,7 @@ footer nav ul {
 	z-index: 999;
 }
 
-.divEdition {
+.divBlackBanner {
 	height: 60px;
 	display: flex;
 	justify-content: center;
@@ -409,7 +409,7 @@ footer nav ul {
 	font-weight: 600;
 }
 
-.grpEdit1 {
+.divEdit1 {
 	display: flex;
 	gap: 0.6em;
 	padding-top: 10px;
@@ -422,24 +422,22 @@ footer nav ul {
 	cursor: pointer;
 }
 
-.textModifier1 {
-	margin-top: 0.2em;
-	font-size: 15px;
-	color: black;
+.textModifier {
+	padding-top: 2px;
 	cursor: pointer;
 }
 
-.grpEdit2 {
+.divH2 {
 	display: flex;
+	justify-content: center;
 	gap: 0.6em;
 	padding-top: 10px;
-	margin-left: 55px;
+	margin-left: 120px;
 }
 
-.textModifier2 {
-	margin-top: 0.2em;
-	font-size: 15px;
-	color: black;
-	cursor: pointer;
+.divEdit2 {
+	display: flex;
+	gap: 0.6em;
+	padding-top: 7px;
+	margin-left: 30px;
 }
-
