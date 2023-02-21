@@ -12,6 +12,7 @@ fetch('http://localhost:5678/api/works', {
     })
     .catch(error => console.error(error));
 
+
 // POUR AFFICHER LE CONTENU DE L'APPEL API :
 const displayWorks = (works) => {
     const gallery = document.querySelector('.gallery');
@@ -37,6 +38,7 @@ const displayWorks = (works) => {
         gallery.appendChild(galleryContent);
     });
 };
+
 // AJOUT DES CATEGORIES VENANT DE L'API POUR FILTRER
 fetch('http://localhost:5678/api/categories', {
     method: 'GET',
@@ -107,8 +109,103 @@ const displayButtons = (categories) => {
     })
 }
 
+// CREATION PAGE DYNAMIQUE SI UTILISATEUR CONNECTE
 let token = localStorage.getItem('token');
-console.log(token)
+// console.log(token)
+
 if (token) {
-    console.log('token présent')
+    console.log('TOKEN PRESENT')
+
+    // LIGNE NOIRE, AVANT HEADER
+    const body = document.querySelector('body');
+    const header = document.querySelector('header');
+    header.style.marginTop = '100px';
+    const blackBanner = document.createElement('div');
+    blackBanner.setAttribute('class', 'blackBanner');
+
+    // INSERTBEFORE AJOUTE AUSSI COMME Append/AppendChild
+    body.insertBefore(blackBanner, header);
+
+    const divBlackBanner = document.createElement('div');
+    divBlackBanner.setAttribute('class', 'divBlackBanner');
+    blackBanner.appendChild(divBlackBanner);
+
+    // AJOUT DE L'ICONE FONTAWESOME A JS
+    const editIcon1 = () => {
+        const editI = document.createElement('i');
+        editI.classList.add('far', 'fa-pen-to-square');
+        // editI.classList.add('faPen_Black');
+        return editI;
+    };
+
+    divBlackBanner.appendChild(editIcon1());
+
+    // AJOUT TEXTE "MODE EDITION"
+    const linkEditor = document.createElement('p');
+    linkEditor.setAttribute('class', 'linkEditor');
+    linkEditor.innerText = "Mode édition";
+    divBlackBanner.appendChild(linkEditor);
+
+    // AJOUT BOUTON EDITION
+    const buttonEdit = document.createElement('button');
+    buttonEdit.setAttribute('class', 'buttonEdit');
+    divBlackBanner.appendChild(buttonEdit);
+
+    // AJOUT TEXTE BOUTON
+    const spanButton = document.createElement('span');
+    spanButton.setAttribute('class', 'spanButton');
+    spanButton.innerText = 'publier les changements';
+    buttonEdit.appendChild(spanButton);
+
+    // AJOUT DIV MODIFIER AVEC ICONE + P
+    const figureImg = document.getElementById('figure_introduction');
+
+    const divEdit1 = document.createElement('div');
+    divEdit1.setAttribute('class', 'divEdit1');
+    figureImg.appendChild(divEdit1);
+
+    // AJOUT DEUXIEME ICON
+    const editIcon2 = () => {
+        const editI = document.createElement('i');
+        editI.classList.add('far', 'fa-pen-to-square');
+        editI.classList.add('faPen_Black');
+        return editI;
+    };
+
+    // AJOUT TEXTE modifier
+    const textEdit = () => {
+        const textModifier = document.createElement('p');
+        textModifier.setAttribute('class', 'textModifier');
+        textModifier.innerText = 'modifier';
+        return textModifier;
+    }
+
+    divEdit1.appendChild(editIcon2());
+    divEdit1.appendChild(textEdit());
+
+    // AJOUT BOUTON SECTION h2
+    const sectionh2 = document.getElementById('portfolio');
+    const projectH2 = document.querySelector('#portfolio h2');
+    const buttonFilter = document.querySelector('.button_filter');
+    projectH2.style.marginBottom = '0';
+
+    const divH2 = document.createElement('div');
+    divH2.setAttribute('class', 'divH2');
+    divH2.style.marginBottom = "4rem";
+    sectionh2.insertBefore(divH2, buttonFilter);
+
+    divH2.appendChild(projectH2);
+
+    // AJOUT BOUTON POUR MODALE
+    const buttonH2 = document.createElement('button');
+    buttonH2.setAttribute('class', 'buttonH2');
+    divH2.appendChild(buttonH2);
+
+    buttonH2.appendChild(editIcon2());
+    buttonH2.appendChild(textEdit());
+
+
+    // SUPPRESSION DES BOUTONS FILTRES
+    const divFilter = document.querySelector('.button_filter');
+    divFilter.style.display = "none";
 }
