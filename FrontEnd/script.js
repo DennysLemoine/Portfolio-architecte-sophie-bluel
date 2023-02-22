@@ -33,6 +33,10 @@ const displayWorks = (works) => {
         img.alt = work.title;
         figcaption.innerText = work.title;
 
+        // localStorage POUR STOCKER WORK POUR MODALE
+        const workToJSON = JSON.stringify(works);
+        localStorage.setItem('workImage', workToJSON);
+
         galleryContent.append(img, figcaption);
 
         gallery.appendChild(galleryContent);
@@ -73,7 +77,7 @@ const displayButtons = (categories) => {
         // console.log(category.id)
         button.classList.add('button_text')
 
-        console.log(category);
+        // console.log(category);
 
         btn_wrap.appendChild(button);
 
@@ -199,13 +203,38 @@ if (token) {
     // AJOUT BOUTON POUR MODALE
     const buttonH2 = document.createElement('button');
     buttonH2.setAttribute('class', 'buttonH2');
+    buttonH2.setAttribute('data-url', 'modal.html');
+    buttonH2.addEventListener('click', () => {
+        window.location.href = 'modal.html';
+    });
+
     divH2.appendChild(buttonH2);
 
     buttonH2.appendChild(editIcon2());
     buttonH2.appendChild(textEdit());
 
+    // MODALE
+    const openModal = function (e) {
+        e.preventDefault();
+        const url = e.target.getAttribute('data-url');
+        const target = document.querySelector(url);
+        target.style.display = null;
+        target.removeAttribute('aria-hidden');
+        target.setAttribute('aria-modal', 'true');
+    };
 
-    // SUPPRESSION DES BOUTONS FILTRES
+
+    buttonH2.addEventListener('click', openModal);
+
+    //AFFICHER IMAGES DANS LA MODALE
+    // const workFromJSON = localStorage.getItem('workImage');
+    // const workToImage = JSON.parse(workFromJSON);
+    // console.log(workToImage.categoryId);
+    // console.log(workToImage.imageUrl);
+
+    // const imagesModal = document.querySelector('');
+
+    // // SUPPRESSION DES BOUTONS FILTRES
     const divFilter = document.querySelector('.button_filter');
     divFilter.style.display = "none";
 }
