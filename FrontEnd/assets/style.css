@@ -459,10 +459,21 @@ footer nav ul {
 }
 
 .modal_wrapper {
+	position: relative;
 	background-color: white;
 	height: 510px;
 	width: 480px;
 	border-radius: 10px;
+}
+
+.fa-xmark {
+	position: absolute;
+	right: 0;
+	padding: 20px 25px 0 0;
+	font-size: 17px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
 }
 
 .titleModal {

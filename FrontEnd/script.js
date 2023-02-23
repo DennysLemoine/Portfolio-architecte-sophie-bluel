@@ -195,7 +195,7 @@ if (token) {
 
     const divH2 = document.createElement('div');
     divH2.setAttribute('class', 'divH2');
-    divH2.style.marginBottom = "4rem";
+    divH2.style.marginBottom = '4rem';
     sectionh2.insertBefore(divH2, buttonFilter);
 
     divH2.appendChild(projectH2);
@@ -203,36 +203,11 @@ if (token) {
     // AJOUT BOUTON POUR MODALE
     const buttonH2 = document.createElement('button');
     buttonH2.setAttribute('class', 'buttonH2');
-    buttonH2.setAttribute('data-url', 'modal.html');
-    buttonH2.addEventListener('click', () => {
-        window.location.href = 'modal.html';
-    });
 
     divH2.appendChild(buttonH2);
 
     buttonH2.appendChild(editIcon2());
     buttonH2.appendChild(textEdit());
-
-    // MODALE
-    const openModal = function (e) {
-        e.preventDefault();
-        const url = e.target.getAttribute('data-url');
-        const target = document.querySelector(url);
-        target.style.display = null;
-        target.removeAttribute('aria-hidden');
-        target.setAttribute('aria-modal', 'true');
-    };
-
-
-    buttonH2.addEventListener('click', openModal);
-
-    //AFFICHER IMAGES DANS LA MODALE
-    // const workFromJSON = localStorage.getItem('workImage');
-    // const workToImage = JSON.parse(workFromJSON);
-    // console.log(workToImage.categoryId);
-    // console.log(workToImage.imageUrl);
-
-    // const imagesModal = document.querySelector('');
 
     // // SUPPRESSION DES BOUTONS FILTRES
     const divFilter = document.querySelector('.button_filter');
