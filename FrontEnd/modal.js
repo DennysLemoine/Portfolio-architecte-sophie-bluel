@@ -12,6 +12,60 @@ buttonH2.addEventListener('click', () => {
     modal.addEventListener('click', closeModal);
     modal.querySelector('.fa-xmark').addEventListener('click', closeModal);
     modal.querySelector('.modal_wrapper').addEventListener('click', stopPropagation);
+
+    fetch('http://localhost:5678/api/works', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data)
+            displayWorks(data);
+        })
+        .catch(error => console.error(error));
+
+
+    const displayWorks = (works) => {
+        const divImages = document.querySelector('.imagesModal');
+
+        works.forEach((work) => {
+            const container = document.createElement('div');
+            container.setAttribute('class', 'imageContainer');
+
+            const img = document.createElement('img');
+
+            const buttonArrow = document.createElement('button');
+            buttonArrow.classList.add('buttonArrow');
+            const iconArrow = document.createElement('span');
+            iconArrow.classList.add('fas', 'fa-arrows-alt');
+
+            const buttonTrash = document.createElement('button');
+            buttonTrash.classList.add('buttonTrash');
+            const iconTrash = document.createElement('span');
+            iconTrash.classList.add('fas', 'fa-trash-alt');
+
+            buttonArrow.appendChild(iconArrow);
+            buttonTrash.appendChild(iconTrash);
+
+            const text = '<button class="buttonTextImg">éditer</button>';
+
+            img.crossOrigin = 'anonymous';
+            img.src = work.imageUrl;
+
+            container.append(img);
+            container.append(buttonArrow, iconTrash);
+            container.insertAdjacentHTML('beforeend', text);
+            divImages.append(container);
+        });
+
+        const buttonArrow = document.createElement('button');
+        buttonArrow.classList.add('buttonArrow');
+        const iconArrow = document.createElement('span');
+        iconArrow.classList.add('fas', 'fa-arrows-alt');
+
+    };
 });
 
 const closeModal = function (e) {
@@ -30,18 +84,4 @@ const stopPropagation = function (e) {
 }
 
 // AFFICHER IMAGES DANS LA MODALE
-const divGrid = document.querySelector('.imagesModal');
-const workFromJSON = localStorage.getItem('workImage');
-const workToImage = JSON.parse(workFromJSON);
-console.log(workToImage);
 
-const img = document.createElement('img');
-
-// img.crossOrigin = 'anonymous';
-img.src = workToImage.imageUrl;
-
-img.addEventListener('load', () => {
-    divGrid.append(img);
-});
-
-console.log(workToImage.imageUrl);

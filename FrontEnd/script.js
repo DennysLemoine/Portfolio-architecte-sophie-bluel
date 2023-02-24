@@ -33,10 +33,6 @@ const displayWorks = (works) => {
         img.alt = work.title;
         figcaption.innerText = work.title;
 
-        // localStorage POUR STOCKER WORK POUR MODALE
-        const workToJSON = JSON.stringify(works);
-        localStorage.setItem('workImage', workToJSON);
-
         galleryContent.append(img, figcaption);
 
         gallery.appendChild(galleryContent);
@@ -138,7 +134,6 @@ if (token) {
     const editIcon1 = () => {
         const editI = document.createElement('i');
         editI.classList.add('far', 'fa-pen-to-square');
-        // editI.classList.add('faPen_Black');
         return editI;
     };
 

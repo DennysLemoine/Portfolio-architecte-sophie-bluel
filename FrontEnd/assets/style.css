@@ -491,3 +491,25 @@ footer nav ul {
 	grid-gap: 10px;
 	padding: 0 70px;
 }
+
+.imagesModal img {
+	position: relative;
+	max-width: 100%;
+}
+
+.fa-arrows-alt {
+	color: white;
+	background-color: black;
+	font-size: 14px;
+}
+
+.fa-trash-can {
+
+}
+
+.buttonTextImg {
+	padding-left: 0;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+}
