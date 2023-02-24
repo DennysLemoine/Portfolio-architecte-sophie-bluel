@@ -1,8 +1,9 @@
 // MODALE
 let modal = null;
 let isDataFetched = false;
+const buttonH2 = document.querySelector('.buttonH2');
+const modalWrapper = document.querySelector('.modal_wrapper');
 
-const buttonH2 = document.querySelector('.buttonH2')
 buttonH2.addEventListener('click', () => {
     const aside = document.querySelector('#modal');
     // console.log(aside)
@@ -68,6 +69,26 @@ buttonH2.addEventListener('click', () => {
         });
     };
 });
+
+const lineGrey = document.createElement('div');
+lineGrey.setAttribute('class', 'lineGrey');
+
+modalWrapper.appendChild(lineGrey);
+
+const addButton = document.createElement('button');
+addButton.setAttribute('class','addButton');
+addButton.innerText = 'Ajouter une photo';
+
+modalWrapper.appendChild(addButton);
+
+const deleteHref = document.createElement('a');
+deleteHref.setAttribute('class', 'deleteHref');
+deleteHref.innerText = 'Supprimer la galerie'
+
+modalWrapper.appendChild(deleteHref);
+
+
+
 
 const closeModal = function (e) {
     if (modal === null) return;

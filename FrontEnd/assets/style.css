@@ -461,8 +461,8 @@ footer nav ul {
 .modal_wrapper {
 	position: relative;
 	background-color: white;
-	height: 725px;
-	width: 575px;
+	height: 690px;
+	width: 600px;
 	border-radius: 10px;
 }
 
@@ -489,11 +489,16 @@ footer nav ul {
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	grid-gap: 10px;
-	padding: 0 70px;
+	padding: 0 100px;
+	margin-bottom: 40px;
 }
 
 .imageContainer {
 	position: relative;
+}
+
+.imageContainer:hover .buttonArrow {
+	display: block;
 }
 
 .imagesModal img {
@@ -502,6 +507,7 @@ footer nav ul {
 }
 
 .buttonArrow {
+	display: none;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -512,7 +518,10 @@ footer nav ul {
 	border: none;
 	border-radius: 2px;
 	cursor: pointer;
+}
 
+.buttonArrow:hover {
+	display: block;
 }
 
 .fa-arrows-up-down-left-right {
@@ -547,4 +556,35 @@ footer nav ul {
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
+}
+
+.lineGrey {
+	background-color: #c2c2c2;
+	margin: 0 100px;
+	height: 1px;
+}
+
+.addButton {
+	display: block;
+	margin: 0 auto;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: #ffffff;
+	border: 1px solid #1D6154;
+	background-color: #1D6154;
+	border-radius: 60px;
+	padding: 0.5rem 3rem;
+	cursor: pointer;
+	margin-top: 40px;
+}
+
+.deleteHref {
+	font-size: 10px;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	font-family: 'Syne';
+	color: red;
+	cursor: pointer;
+	margin-top: 20px;
 }
