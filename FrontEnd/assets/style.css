@@ -588,3 +588,13 @@ footer nav ul {
 	cursor: pointer;
 	margin-top: 20px;
 }
+
+.fa-arrow-left {
+	position: absolute;
+	left: 0;
+	padding: 20px 25px 0 0;
+	font-size: 17px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}

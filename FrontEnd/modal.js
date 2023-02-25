@@ -4,6 +4,8 @@ let isDataFetched = false;
 const buttonH2 = document.querySelector('.buttonH2');
 const modalWrapper = document.querySelector('.modal_wrapper');
 
+
+// PREMIERE MODAL
 buttonH2.addEventListener('click', () => {
     const aside = document.querySelector('#modal');
     // console.log(aside)
@@ -30,7 +32,7 @@ buttonH2.addEventListener('click', () => {
                 isDataFetched = true;
             })
             .catch(error => console.error(error));
-    };
+    }
 
     const displayWorks = (works) => {
         const divImages = document.querySelector('.imagesModal');
@@ -79,6 +81,18 @@ const addButton = document.createElement('button');
 addButton.setAttribute('class','addButton');
 addButton.innerText = 'Ajouter une photo';
 
+addButton.addEventListener('click', ()  => {
+    closeModal();
+    const aside2 = document.querySelector('#modal2');
+    aside2.style.display = null;
+    aside2.removeAttribute('aria-hidden');
+    aside2.setAttribute('aria-modal', 'true');
+    modal = aside2;
+    modal.addEventListener('click', closeModal);
+    modal.querySelector('.fa-xmark').addEventListener('click', closeModal);
+    modal.querySelector('.modal_wrapper').addEventListener('click', stopPropagation);
+})
+
 modalWrapper.appendChild(addButton);
 
 const deleteHref = document.createElement('a');
@@ -88,8 +102,7 @@ deleteHref.innerText = 'Supprimer la galerie'
 modalWrapper.appendChild(deleteHref);
 
 
-
-
+// FERMER MODAL
 const closeModal = function (e) {
     if (modal === null) return;
     modal.style.display = 'none';
@@ -104,6 +117,3 @@ const closeModal = function (e) {
 const stopPropagation = function (e) {
     e.stopPropagation()
 }
-
-// AFFICHER IMAGES DANS LA MODALE
-
