@@ -2,7 +2,8 @@
 let modal = null;
 let isDataFetched = false;
 const buttonH2 = document.querySelector('.buttonH2');
-const modalWrapper = document.querySelector('.modal_wrapper');
+const modalWrapper1 = document.querySelector('.modal_wrapper1');
+const modalWrapper2 = document.querySelector('.modal_wrapper2');
 
 
 // PREMIERE MODAL
@@ -15,7 +16,7 @@ buttonH2.addEventListener('click', () => {
     modal = aside;
     modal.addEventListener('click', closeModal);
     modal.querySelector('.fa-xmark').addEventListener('click', closeModal);
-    modal.querySelector('.modal_wrapper').addEventListener('click', stopPropagation);
+    modal.querySelector('.modal_wrapper1').addEventListener('click', stopPropagation);
 
     // EMPECHER LE BUTTON D'APPELER L'API PLUSIEURS FOIS
     if (!isDataFetched) {
@@ -75,12 +76,21 @@ buttonH2.addEventListener('click', () => {
 const lineGrey = document.createElement('div');
 lineGrey.setAttribute('class', 'lineGrey');
 
-modalWrapper.appendChild(lineGrey);
+modalWrapper1.appendChild(lineGrey);
 
 const addButton = document.createElement('button');
 addButton.setAttribute('class','addButton');
 addButton.innerText = 'Ajouter une photo';
 
+modalWrapper1.appendChild(addButton);
+
+const deleteHref = document.createElement('a');
+deleteHref.setAttribute('class', 'deleteHref');
+deleteHref.innerText = 'Supprimer la galerie'
+
+modalWrapper1.appendChild(deleteHref);
+
+// DEUXIEME MODAL
 addButton.addEventListener('click', ()  => {
     closeModal();
     const aside2 = document.querySelector('#modal2');
@@ -90,16 +100,58 @@ addButton.addEventListener('click', ()  => {
     modal = aside2;
     modal.addEventListener('click', closeModal);
     modal.querySelector('.fa-xmark').addEventListener('click', closeModal);
-    modal.querySelector('.modal_wrapper').addEventListener('click', stopPropagation);
-})
+    modal.querySelector('.modal_wrapper2').addEventListener('click', stopPropagation);
+});
 
-modalWrapper.appendChild(addButton);
+const divAddPhoto = document.createElement('div');
+divAddPhoto.setAttribute('class', 'divAddPhoto');
 
-const deleteHref = document.createElement('a');
-deleteHref.setAttribute('class', 'deleteHref');
-deleteHref.innerText = 'Supprimer la galerie'
+const iconPng = document.createElement('span');
+iconPng.classList.add('far', 'fa-image');
 
-modalWrapper.appendChild(deleteHref);
+const addPhoto = document.createElement('button');
+addPhoto.setAttribute('class','addPhoto');
+addPhoto.innerText = '+ Ajouter photo';
+
+const spanAddPhoto = document.createElement('span');
+spanAddPhoto.setAttribute('class', 'spanAddPhoto');
+spanAddPhoto.innerText = 'jpg, png : 4mo max'
+
+modalWrapper2.appendChild(divAddPhoto);
+
+divAddPhoto.append(iconPng, addPhoto, spanAddPhoto);
+
+const divInput1 = document.createElement('div');
+divInput1.setAttribute('class', 'divInput');
+
+modalWrapper2.appendChild(divInput1);
+
+const labelTitle = document.createElement("label");
+labelTitle.setAttribute('class', 'label');
+labelTitle.setAttribute('for', 'titleimage');
+labelTitle.innerText = 'Titre';
+
+const input1 = document.createElement('input');
+input1.setAttribute('class', 'input1');
+input1.type = 'text';
+input1.setAttribute('class', 'input1');
+
+divInput1.append(labelTitle, input1);
+
+const divInput2 = document.createElement('div');
+divInput2.setAttribute('class', 'divInput');
+
+modalWrapper2.appendChild(divInput2);
+
+const labelCategorie = document.createElement("label");
+labelCategorie.setAttribute('class', 'label');
+labelCategorie.setAttribute('for', 'selectcategorie');
+labelCategorie.innerText = 'Catégorie';
+
+const input2 = document.createElement('input');
+input2.setAttribute('class', 'input2');
+input2.type = 'text';
+input2.setAttribute('class', 'input2');
 
 
 // FERMER MODAL
@@ -110,9 +162,9 @@ const closeModal = function (e) {
     modal.removeAttribute('aria-modal', 'true');
     modal.removeEventListener('click', closeModal);
     modal.querySelector('.fa-xmark').removeEventListener('click', closeModal);
-    modal.querySelector('.modal_wrapper').removeEventListener('click', stopPropagation);
+    modal.querySelector('.modal_wrapper1').removeEventListener('click', stopPropagation);
     modal = null;
-}
+};
 
 const stopPropagation = function (e) {
     e.stopPropagation()

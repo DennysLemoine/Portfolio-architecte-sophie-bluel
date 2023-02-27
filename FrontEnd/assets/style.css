@@ -458,7 +458,15 @@ footer nav ul {
 	background: rgba(0, 0, 0, 0.2);
 }
 
-.modal_wrapper {
+.modal_wrapper1 {
+	position: relative;
+	background-color: white;
+	height: 690px;
+	width: 600px;
+	border-radius: 10px;
+}
+
+.modal_wrapper2 {
 	position: relative;
 	background-color: white;
 	height: 690px;
@@ -570,7 +578,7 @@ footer nav ul {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: #ffffff;
-	border: 1px solid #1D6154;
+	border: none;
 	background-color: #1D6154;
 	border-radius: 60px;
 	padding: 0.5rem 3rem;
@@ -592,9 +600,42 @@ footer nav ul {
 .fa-arrow-left {
 	position: absolute;
 	left: 0;
-	padding: 20px 25px 0 0;
+	padding: 20px 0 0 25px;
 	font-size: 17px;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+}
+
+.divAddPhoto {
+	background-color: #e8f1f6;
+}
+
+.fa-image {
+	display: block;
+	margin: 0 auto;
+	color: #cbd6dc;
+	font-size: 70px;
+	padding-top: 40px;
+}
+
+.addPhoto {
+	display: block;
+	margin: 0 auto;
+	font-weight: 600;
+	color: #306685;
+	border: none;
+	background-color: #cbd6dc;
+	border-radius: 60px;
+	padding: 0.7rem 2rem;
+	cursor: pointer;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.spanAddPhoto {
+	display: block;
+	text-align: center;
+	padding-bottom: 25px;
+	color: #1c1c1c;
 }
