@@ -469,7 +469,7 @@ footer nav ul {
 .modal_wrapper2 {
 	position: relative;
 	background-color: white;
-	height: 690px;
+	height: 675px;
 	width: 600px;
 	border-radius: 10px;
 }
@@ -609,6 +609,7 @@ footer nav ul {
 
 .divAddPhoto {
 	background-color: #e8f1f6;
+	margin: 0 100px 30px 100px;
 }
 
 .fa-image {
@@ -627,7 +628,7 @@ footer nav ul {
 	border: none;
 	background-color: #cbd6dc;
 	border-radius: 60px;
-	padding: 0.7rem 2rem;
+	padding: 0.7rem 2.5rem;
 	cursor: pointer;
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -636,6 +637,40 @@ footer nav ul {
 .spanAddPhoto {
 	display: block;
 	text-align: center;
+	font-size: 9px;
 	padding-bottom: 25px;
 	color: #1c1c1c;
+}
+
+.divInput {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 22px;
+}
+
+.addButton2 {
+	display: block;
+	margin: 0 auto;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: #ffffff;
+	border: none;
+	background-color: #1D6154;
+	border-radius: 60px;
+	padding: 0.5rem 5rem;
+	cursor: pointer;
+}
+
+.input2 {
+	width: 400px;
+	height: 2.5rem;
+	border: none;
+	box-shadow: 0 10px 15px #eeece9;
+}
+
+.lineGrey2 {
+	background-color: #c2c2c2;
+	margin: 40px 100px 30px 100px;
+	height: 1px;
 }

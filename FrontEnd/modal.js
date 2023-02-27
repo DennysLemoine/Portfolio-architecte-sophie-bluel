@@ -132,9 +132,8 @@ labelTitle.setAttribute('for', 'titleimage');
 labelTitle.innerText = 'Titre';
 
 const input1 = document.createElement('input');
-input1.setAttribute('class', 'input1');
+input1.setAttribute('class', 'input2');
 input1.type = 'text';
-input1.setAttribute('class', 'input1');
 
 divInput1.append(labelTitle, input1);
 
@@ -151,7 +150,19 @@ labelCategorie.innerText = 'Catégorie';
 const input2 = document.createElement('input');
 input2.setAttribute('class', 'input2');
 input2.type = 'text';
-input2.setAttribute('class', 'input2');
+
+divInput2.append(labelCategorie, input2);
+
+const lineGrey2 = document.createElement('div');
+lineGrey2.setAttribute('class', 'lineGrey2');
+
+modalWrapper2.appendChild(lineGrey2);
+
+const OkButton = document.createElement('button');
+OkButton.setAttribute('class','addButton2');
+OkButton.innerText = 'Valider';
+
+modalWrapper2.appendChild(OkButton);
 
 
 // FERMER MODAL
