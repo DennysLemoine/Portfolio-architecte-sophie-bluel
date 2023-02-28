@@ -70,32 +70,41 @@ buttonH2.addEventListener('click', () => {
             container.append(buttonArrow, buttonTrash);
             container.insertAdjacentHTML('beforeend', text);
             divImages.append(container);
+
         });
+        // SUPPRESSION ELEMENTS MODAL
+        const buttonTrashList = document.querySelectorAll('.buttonTrash');
+
+        if (token) {
+            buttonTrashList.forEach(buttonTrash => {
+                buttonTrash.addEventListener('click', () => {
+                    console.log(buttonTrash);
+                    const token = localStorage.getItem('token');
+                    console.log(token);
+                    const id = buttonTrash.parentNode.querySelector('img').id;
+                    fetch(`http://localhost:5678/api/works/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`,
+                        }
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                const element = buttonTrash.parentNode;
+                                element.remove();
+                            } else {
+                                console.error(`La suppression a échoué.`);
+                            }
+                        })
+                        .catch(error => {
+                            console.error(`Une erreur est survenue lors de la suppression de l'élément `, error)
+                        });
+                });
+            })
+        }
     };
 
-    // SUPPRESSION ELEMENTS MODAL
-    const buttonTrashList = document.querySelectorAll('.buttonTrash');
-
-    buttonTrashList.forEach(buttonTrash => {
-        buttonTrash.addEventListener('click', () => {
-            console.log(buttonTrash);
-            const id = buttonTrash.parentNode.querySelector('img').id;
-            fetch(`http://localhost:5678/api/works/${id}`, {
-                method: 'DELETE',
-            })
-                .then(response => {
-                    if (response.ok) {
-                        const element = buttonTrash.parentNode;
-                        element.remove();
-                    } else {
-                        console.error(`La suppression a échoué.`);
-                    }
-                })
-                .catch(error => {
-                    console.error(`Une erreur est survenue lors de la suppression de l'élément `, error)
-                });
-        });
-    })
 });
 
 // CREATION ELEMENT PREMIERE MODAL
