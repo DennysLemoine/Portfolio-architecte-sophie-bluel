@@ -52,6 +52,7 @@ buttonH2.addEventListener('click', () => {
 
             const buttonTrash = document.createElement('button');
             buttonTrash.classList.add('buttonTrash');
+            buttonTrash.setAttribute('data-id', work.id);
             const iconTrash = document.createElement('span');
             iconTrash.classList.add('fas', 'fa-trash-alt');
             iconTrash.classList.add('fa-trash');
@@ -71,6 +72,30 @@ buttonH2.addEventListener('click', () => {
             divImages.append(container);
         });
     };
+
+    // SUPPRESSION ELEMENTS MODAL
+    const buttonTrashList = document.querySelectorAll('.buttonTrash');
+
+    buttonTrashList.forEach(buttonTrash => {
+        buttonTrash.addEventListener('click', () => {
+            console.log(buttonTrash);
+            const id = buttonTrash.parentNode.querySelector('img').id;
+            fetch(`http://localhost:5678/api/works/${id}`, {
+                method: 'DELETE',
+            })
+                .then(response => {
+                    if (response.ok) {
+                        const element = buttonTrash.parentNode;
+                        element.remove();
+                    } else {
+                        console.error(`La suppression a échoué.`);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Une erreur est survenue lors de la suppression de l'élément `, error)
+                });
+        });
+    })
 });
 
 // CREATION ELEMENT PREMIERE MODAL
@@ -214,3 +239,4 @@ const closeModal = function (e) {
 const stopPropagation = function (e) {
     e.stopPropagation()
 }
+

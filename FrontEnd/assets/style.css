@@ -680,7 +680,7 @@ footer nav ul {
 .lineGrey2 {
 	background-color: #c2c2c2;
 	margin: 40px 100px 30px 100px;
-	height: 1px;
+	height: 0.5px;
 }
 
 .label {
