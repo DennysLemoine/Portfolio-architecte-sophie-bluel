@@ -73,21 +73,19 @@ buttonH2.addEventListener('click', () => {
     };
 });
 
+// CREATION ELEMENT PREMIERE MODAL
 const lineGrey = document.createElement('div');
 lineGrey.setAttribute('class', 'lineGrey');
-
 modalWrapper1.appendChild(lineGrey);
 
 const addButton = document.createElement('button');
 addButton.setAttribute('class','addButton');
 addButton.innerText = 'Ajouter une photo';
-
 modalWrapper1.appendChild(addButton);
 
 const deleteHref = document.createElement('a');
 deleteHref.setAttribute('class', 'deleteHref');
 deleteHref.innerText = 'Supprimer la galerie'
-
 modalWrapper1.appendChild(deleteHref);
 
 // DEUXIEME MODAL
@@ -103,6 +101,7 @@ addButton.addEventListener('click', ()  => {
     modal.querySelector('.modal_wrapper2').addEventListener('click', stopPropagation);
 });
 
+//CREATION ELEMENT DYNAMIQUES DEUXIEME MODAL
 const divAddPhoto = document.createElement('div');
 divAddPhoto.setAttribute('class', 'divAddPhoto');
 
@@ -116,14 +115,12 @@ addPhoto.innerText = '+ Ajouter photo';
 const spanAddPhoto = document.createElement('span');
 spanAddPhoto.setAttribute('class', 'spanAddPhoto');
 spanAddPhoto.innerText = 'jpg, png : 4mo max'
-
 modalWrapper2.appendChild(divAddPhoto);
 
 divAddPhoto.append(iconPng, addPhoto, spanAddPhoto);
 
 const divInput1 = document.createElement('div');
 divInput1.setAttribute('class', 'divInput');
-
 modalWrapper2.appendChild(divInput1);
 
 const labelTitle = document.createElement("label");
@@ -139,19 +136,56 @@ divInput1.append(labelTitle, input1);
 
 const divInput2 = document.createElement('div');
 divInput2.setAttribute('class', 'divInput');
-
 modalWrapper2.appendChild(divInput2);
 
-const labelCategorie = document.createElement("label");
-labelCategorie.setAttribute('class', 'label');
-labelCategorie.setAttribute('for', 'selectcategorie');
-labelCategorie.innerText = 'Catégorie';
+const labelCategories = document.createElement("label");
+labelCategories.setAttribute('class', 'label');
+labelCategories.setAttribute('for', 'categorieimage');
+labelCategories.innerText = 'Catégorie';
 
-const input2 = document.createElement('input');
-input2.setAttribute('class', 'input2');
-input2.type = 'text';
+const selectCategories = document.createElement('select');
+selectCategories.setAttribute('id', 'categorieimage');
+divInput2.appendChild(labelCategories);
+divInput2.appendChild(selectCategories);
 
-divInput2.append(labelCategorie, input2);
+const option1 = document.createElement('option');
+option1.text = '';
+selectCategories.appendChild(option1);
+fetch('http://localhost:5678/api/categories', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+})
+    .then(response => response.json())
+    .then(data => {
+        showCategories(data, selectCategories);
+    })
+    .catch(error => console.error(error));
+const showCategories = (categories, selectCategories) => {
+
+    categories.forEach((category) => {
+
+        const option = document.createElement('option');
+        option.innerText = category.name;
+        option.setAttribute('data-id', category.id);
+        selectCategories.appendChild(option);
+    });
+}
+
+
+
+
+// const labelCategorie = document.createElement("label");
+// labelCategorie.setAttribute('class', 'label');
+// labelCategorie.setAttribute('for', 'selectcategorie');
+// labelCategorie.innerText = 'Catégorie';
+//
+// const input2 = document.createElement('input');
+// input2.setAttribute('class', 'input2');
+// input2.type = 'text';
+//
+// divInput2.append(labelCategorie, input2);
 
 const lineGrey2 = document.createElement('div');
 lineGrey2.setAttribute('class', 'lineGrey2');
@@ -163,7 +197,6 @@ OkButton.setAttribute('class','addButton2');
 OkButton.innerText = 'Valider';
 
 modalWrapper2.appendChild(OkButton);
-
 
 // FERMER MODAL
 const closeModal = function (e) {
@@ -177,6 +210,7 @@ const closeModal = function (e) {
     modal = null;
 };
 
+// POUR EVITER LA FERMETURE NON DESIREE DE LA MODAL
 const stopPropagation = function (e) {
     e.stopPropagation()
 }
