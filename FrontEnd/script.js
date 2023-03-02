@@ -130,6 +130,9 @@ if (token) {
     divBlackBanner.setAttribute('class', 'divBlackBanner');
     blackBanner.appendChild(divBlackBanner);
 
+    const logout = document.querySelector('.ul_btn a');
+    logout.textContent = "logout";
+
     // AJOUT DE L'ICONE FONTAWESOME A JS
     const editIcon1 = () => {
         const editI = document.createElement('i');
