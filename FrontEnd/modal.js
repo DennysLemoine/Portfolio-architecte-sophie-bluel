@@ -174,7 +174,6 @@ if (token) {
             };
 
             reader.readAsDataURL(this.files[0]);
-
         }
     });
 
@@ -222,6 +221,7 @@ if (token) {
     const option1 = document.createElement('option');
     option1.text = '';
     selectCategories.appendChild(option1);
+
     fetch('http://localhost:5678/api/categories', {
         method: 'GET',
         headers: {
@@ -239,7 +239,8 @@ if (token) {
 
             const option = document.createElement('option');
             option.innerText = category.name;
-            option.setAttribute('data-id', category.id);
+            option.value = category.id;
+            console.log(option);
             selectCategories.appendChild(option);
         });
     }
@@ -286,25 +287,25 @@ if (token) {
 // ENVOI DE LA NOUVELLE PHOTO A L'API
     OkButton.addEventListener('click', () => {
 
-        const titleInput = document.querySelector('.input2');
-        console.log(titleInput);
-        const categoryInput = document.querySelector('.categorieimage');
-        const imageInput = document.querySelector('.addPhoto');
+        const title = document.querySelector('.input2').value;
+        const category = document.querySelector('#categorieimage').value;
+        //POUR LOCALISER L'IMAGE SUR MON ORDINATEUR
+        const image = document.querySelector('#filesInput').files[0];
+        // console.log(token);
 
-        const title = titleInput.value;
-        const category = categoryInput.value;
-        const image = imageInput.files[0];
-
-        const formData = new formData();
+        const formData = new FormData();
         formData.append('title', title);
+        console.log(title);
         formData.append('category', category);
+        console.log(category);
         formData.append('image', image);
 
         fetch('http://localhost:5678/api/works', {
             method: 'POST',
             body: formData,
+                // SI LES VARIABLES ONT LE MM NOMS QUE LES CLES, PAS BESOIN DES CLES
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Authorization': `Bearer ${token}`,
             },
         })
             .then(response => response.json())
@@ -314,9 +315,6 @@ if (token) {
             .catch(error => {
                 console.error(`Erreur lors de l'envoi du fichier`, error);
             });
-
-        galleryContent.append(img, figcaption);
-        gallery.appendChild(galleryContent);
     })
 
 // FERMER MODAL
