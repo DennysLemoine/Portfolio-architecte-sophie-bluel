@@ -608,11 +608,17 @@ footer nav ul {
 }
 
 .divAddPhoto {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 	background-color: #e8f1f6;
-	margin: 0 100px 30px 100px;
+	/*margin: 0 100px 30px 100px;*/
+	margin: 0 0 30px 100px;
+	width: 400px;
+	height: 205px;
 }
 
-.fa-image {
+.logoImageSvg {
 	display: block;
 	margin: 0 auto;
 	color: #cbd6dc;
@@ -623,6 +629,7 @@ footer nav ul {
 .addPhoto {
 	display: block;
 	margin: 0 auto;
+	width: 27%;
 	font-weight: 600;
 	color: #306685;
 	border: none;
@@ -642,7 +649,14 @@ footer nav ul {
 	color: #1c1c1c;
 }
 
-.divInput {
+.divInput1 {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 0 100px 22px 100px;
+}
+
+.divInput2 {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -657,10 +671,10 @@ footer nav ul {
 	color: #ffffff;
 	border: none;
 	background-color: #a7a7a7;
-	/*background-color: #1D6154;*/
 	border-radius: 60px;
 	padding: 0.5rem 5rem;
-	cursor: pointer;
+	/*cursor: pointer;*/
+	/*background-color: #1D6154;*/
 }
 
 .input2 {
@@ -668,6 +682,7 @@ footer nav ul {
 	height: 2.5rem;
 	border: none;
 	box-shadow: 0 10px 15px #eeece9;
+	text-indent: 15px;
 }
 
 #categorieimage {
@@ -675,6 +690,7 @@ footer nav ul {
 	height: 2.5rem;
 	border: none;
 	box-shadow: 0 10px 15px #eeece9;
+	text-indent: 15px;
 }
 
 .lineGrey2 {
@@ -686,4 +702,23 @@ footer nav ul {
 .label {
 	align-self: start;
 	padding-bottom: 10px;
+}
+
+.emptyValue {
+	/*display: none;*/
+	color: red;
+}
+
+.errorValue {
+	/*display: none;*/
+	color: red;
+}
+
+.hidden {
+	display: none;
+}
+
+.divAddPhoto img {
+	object-fit: contain;
+	height: 100%;
 }

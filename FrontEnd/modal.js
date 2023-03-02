@@ -139,22 +139,58 @@ addButton.addEventListener('click', ()  => {
 const divAddPhoto = document.createElement('div');
 divAddPhoto.setAttribute('class', 'divAddPhoto');
 
+const divIconPng = document.createElement('div');
+divIconPng.classList.add('divIconPng');
+
+divAddPhoto.appendChild(divIconPng);
+
 const iconPng = document.createElement('span');
 iconPng.classList.add('far', 'fa-image');
+iconPng.classList.add('logoImageSvg');
 
-const addPhoto = document.createElement('button');
-addPhoto.setAttribute('class','addPhoto');
-addPhoto.innerText = '+ Ajouter photo';
+divIconPng.appendChild(iconPng);
+
+const addPhoto = document.createElement('input');
+addPhoto.setAttribute('type', 'file');
+addPhoto.setAttribute('id', 'filesInput');
+addPhoto.setAttribute('accept', 'image/jpeg');
+addPhoto.setAttribute('accept', 'image/png');
+
+addPhoto.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const img = document.createElement('img');
+            img.setAttribute('src', e.target.result);
+            img.style.objectFit = 'cover'
+            divIconPng.classList.add('hidden');
+            addPhoto.classList.add('hidden');
+            addPhotoLabel.classList.add('hidden');
+            spanAddPhoto.classList.add('hidden');
+
+            divAddPhoto.appendChild(img);
+        };
+
+        reader.readAsDataURL(this.files[0]);
+
+    }
+});
+
+const addPhotoLabel = document.createElement('label');
+addPhotoLabel.setAttribute('for', 'filesInput');
+addPhotoLabel.setAttribute('class','addPhoto');
+addPhotoLabel.innerHTML = '+ Ajouter photo';
 
 const spanAddPhoto = document.createElement('span');
 spanAddPhoto.setAttribute('class', 'spanAddPhoto');
 spanAddPhoto.innerText = 'jpg, png : 4mo max'
 modalWrapper2.appendChild(divAddPhoto);
 
-divAddPhoto.append(iconPng, addPhoto, spanAddPhoto);
+divAddPhoto.append(addPhoto, addPhotoLabel, spanAddPhoto);
 
 const divInput1 = document.createElement('div');
-divInput1.setAttribute('class', 'divInput');
+divInput1.setAttribute('class', 'divInput1');
 modalWrapper2.appendChild(divInput1);
 
 const labelTitle = document.createElement("label");
@@ -169,7 +205,7 @@ input1.type = 'text';
 divInput1.append(labelTitle, input1);
 
 const divInput2 = document.createElement('div');
-divInput2.setAttribute('class', 'divInput');
+divInput2.setAttribute('class', 'divInput2');
 modalWrapper2.appendChild(divInput2);
 
 const labelCategories = document.createElement("label");
@@ -207,20 +243,6 @@ const showCategories = (categories, selectCategories) => {
     });
 }
 
-
-
-
-// const labelCategorie = document.createElement("label");
-// labelCategorie.setAttribute('class', 'label');
-// labelCategorie.setAttribute('for', 'selectcategorie');
-// labelCategorie.innerText = 'Catégorie';
-//
-// const input2 = document.createElement('input');
-// input2.setAttribute('class', 'input2');
-// input2.type = 'text';
-//
-// divInput2.append(labelCategorie, input2);
-
 const lineGrey2 = document.createElement('div');
 lineGrey2.setAttribute('class', 'lineGrey2');
 
@@ -229,8 +251,44 @@ modalWrapper2.appendChild(lineGrey2);
 const OkButton = document.createElement('button');
 OkButton.setAttribute('class','addButton2');
 OkButton.innerText = 'Valider';
+OkButton.setAttribute('disabled', 'true');
 
 modalWrapper2.appendChild(OkButton);
+
+// CREATION EVENEMENT ENVOI DOCUMENT
+// const divErrorMsg = document.createElement('div');
+// divErrorMsg.setAttribute('class', 'divErrorMsg');
+// divInput2.appendChild(divErrorMsg);
+//
+// const emptyValue = document.createElement('p');
+// emptyMessage.setAttribute('id', 'emptyValue');
+// const errorValue = document.createElement('p');
+// errorValue.setAttribute('id', 'errorValue');
+// divErrorMsg.append(emptyValue, errorValue);
+
+// addPhoto.addEventListener('click', () => {
+//     const files = input.files;
+//     console.log(files);
+// })
+
+// function disableButton() {
+//     if (input1.value && selectCategories.value) {
+//         OkButton.disabled = false;
+//     } else {
+//         OkButton.disabled = true;
+//     }
+// }
+//
+// OkButton.addEventListener('click', () => {
+//
+// })
+
+
+
+
+
+
+
 
 // FERMER MODAL
 const closeModal = function (e) {
