@@ -133,6 +133,10 @@ if (token) {
     const logout = document.querySelector('.ul_btn a');
     logout.textContent = "logout";
 
+    logout.addEventListener('click', () => {
+        localStorage.removeItem('token');
+    });
+
     // AJOUT DE L'ICONE FONTAWESOME A JS
     const editIcon1 = () => {
         const editI = document.createElement('i');
