@@ -10,8 +10,10 @@
           rel="stylesheet">
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
+    <script src="https://kit.fontawesome.com/e143285355.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
-    <script src="https://kit.fontawesome.com/e143285355.js" crossorigin="anonymous" defer></script>
+    <script src="modal.js" defer></script>
+
 </head>
 <body class="body">
 <header class="header">
@@ -41,6 +43,20 @@
                 décorateur(trice)</p>
         </article>
     </section>
+    <aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titleModal" style="display: none;">
+        <div class="modal_wrapper1">
+            <button class="fas fa-xmark">Fermer la boîte modale</button>
+            <h1 id="titleModal" class="titleModal">Galerie Photo</h1>
+            <div class="imagesModal"></div>
+        </div>
+    </aside>
+    <aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titleModal" style="display: none;">
+        <div class="modal_wrapper2">
+            <button class="fas fa-arrow-left">Précédent</button>
+            <button class="fas fa-xmark">Fermer la boîte modale</button>
+            <h1 class="titleModal">Ajout photo</h1>
+        </div>
+    </aside>
     <section id="portfolio">
         <h2>Mes projets</h2>
         <div class="button_filter">

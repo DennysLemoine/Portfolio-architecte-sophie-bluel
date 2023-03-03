@@ -73,7 +73,7 @@ const displayButtons = (categories) => {
         // console.log(category.id)
         button.classList.add('button_text')
 
-        console.log(category);
+        // console.log(category);
 
         btn_wrap.appendChild(button);
 
@@ -130,11 +130,17 @@ if (token) {
     divBlackBanner.setAttribute('class', 'divBlackBanner');
     blackBanner.appendChild(divBlackBanner);
 
+    const logout = document.querySelector('.ul_btn a');
+    logout.textContent = "logout";
+
+    logout.addEventListener('click', () => {
+        localStorage.removeItem('token');
+    });
+
     // AJOUT DE L'ICONE FONTAWESOME A JS
     const editIcon1 = () => {
         const editI = document.createElement('i');
         editI.classList.add('far', 'fa-pen-to-square');
-        // editI.classList.add('faPen_Black');
         return editI;
     };
 
@@ -191,7 +197,7 @@ if (token) {
 
     const divH2 = document.createElement('div');
     divH2.setAttribute('class', 'divH2');
-    divH2.style.marginBottom = "4rem";
+    divH2.style.marginBottom = '4rem';
     sectionh2.insertBefore(divH2, buttonFilter);
 
     divH2.appendChild(projectH2);
@@ -199,13 +205,13 @@ if (token) {
     // AJOUT BOUTON POUR MODALE
     const buttonH2 = document.createElement('button');
     buttonH2.setAttribute('class', 'buttonH2');
+
     divH2.appendChild(buttonH2);
 
     buttonH2.appendChild(editIcon2());
     buttonH2.appendChild(textEdit());
 
-
-    // SUPPRESSION DES BOUTONS FILTRES
+    // // SUPPRESSION DES BOUTONS FILTRES
     const divFilter = document.querySelector('.button_filter');
     divFilter.style.display = "none";
 }
